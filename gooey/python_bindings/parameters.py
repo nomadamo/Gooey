@@ -17,19 +17,16 @@ from gooey.util.functional import merge
 
 def _get_font_weight(kwargs):
     error_msg = textwrap.dedent('''
-    Unknown font weight {}. 
     Unknown font weight {}.
 
-    The available weights can be found in the `constants` module. 
     The available weights can be found in the `constants` module.
     They're prefixed with "FONTWEIGHT" (e.g. `FONTWEIGHT_BOLD`)
 
-    example code:    
+    example code:
 
     ```
     from gooey import constants
     @Gooey(terminal_font_weight=constants.FONTWEIGHT_NORMAL)
-    ```   
     ''')
     weights = {
         constants.FONTWEIGHT_THIN,
@@ -132,6 +129,7 @@ def gooey_params(**kwargs) -> GooeyParams:
 
         'terminal_panel_color': kwargs.get('terminal_panel_color', constants.COLOR_GREY_80 if use_dark_mode else constants.COLOR_GREY_10),
         'terminal_font_color':  kwargs.get('terminal_font_color', default_text_color),
+        'terminal_bg_color': kwargs.get('terminal_bg_color', '#FFFFFF'),
         'terminal_font_family': kwargs.get('terminal_font_family', None),
         'terminal_font_weight': _get_font_weight(kwargs),
         'terminal_font_size': kwargs.get('terminal_font_size', None),
