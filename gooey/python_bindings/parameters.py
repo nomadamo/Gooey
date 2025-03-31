@@ -115,7 +115,6 @@ def gooey_params(**kwargs) -> GooeyParams:
         'tabbed_groups': kwargs.get('tabbed_groups', False),
         'group_by_type': kwargs.get('group_by_type', True),
 
-
         'body_bg_color': kwargs.get('body_bg_color', constants.COLOR_GREY_90 if use_dark_mode else constants.COLOR_GREY_5),
         'body_text_color': kwargs.get('body_text_color', default_text_color),
         'header_bg_color': kwargs.get('header_bg_color', constants.COLOR_GREY_100 if use_dark_mode else constants.COLOR_WHITE),
