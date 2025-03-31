@@ -18,8 +18,10 @@ from gooey.util.functional import merge
 def _get_font_weight(kwargs):
     error_msg = textwrap.dedent('''
     Unknown font weight {}. 
+    Unknown font weight {}.
 
     The available weights can be found in the `constants` module. 
+    The available weights can be found in the `constants` module.
     They're prefixed with "FONTWEIGHT" (e.g. `FONTWEIGHT_BOLD`)
 
     example code:    

@@ -34,7 +34,7 @@ class Console(wx.Panel):
             self.getFontFace(),
         ))
         self.textbox.SetForegroundColour(self.buildSpec['terminal_font_color'])
-         
+
         self.layoutComponent()
         self.Layout()
         self.Bind(wx.EVT_TEXT_URL, self.evtUrl, self.textbox)
@@ -92,7 +92,7 @@ class Console(wx.Panel):
         return self.textbox.GetValue()
 
     def layoutComponent(self):
-        self.SetBackgroundColour(self.buildSpec.get('terminal_panel_color', '#F0F0F0'))
+        self.textbox.SetBackgroundColour(self.buildSpec.get('terminal_bg_color', '#FFFFFF'))
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.AddSpacer(10)
         sizer.Add(self.text, 0, wx.LEFT, 20)
@@ -100,5 +100,3 @@ class Console(wx.Panel):
         sizer.Add(self.textbox, 1, wx.LEFT | wx.RIGHT | wx.BOTTOM | wx.EXPAND, 20)
         sizer.AddSpacer(20)
         self.SetSizer(sizer)
-
-
