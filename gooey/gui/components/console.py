@@ -15,13 +15,15 @@ class Console(wx.Panel):
     def __init__(self, parent, buildSpec, **kwargs):
         wx.Panel.__init__(self, parent, name='console', **kwargs)
         self.buildSpec = buildSpec
-
         self.text = wx.StaticText(self, label=_("status"))
         if buildSpec["richtext_controls"]:
             from .widgets.richtextconsole import RichTextConsole
             self.textbox = RichTextConsole(self)
         else:
             self.textbox = BasicTextConsole(self)
+            self.textbox.SetDoubleBuffered(True)
+            self.textbox.SetBackgroundColour(self.buildSpec.get('terminal_bg_color', '#FFFFFF'))
+            self.textbox.SetForegroundColour(self.buildSpec['terminal_font_color'])
 
         self.defaultFont = self.textbox.GetFont()
 
@@ -33,7 +35,6 @@ class Console(wx.Panel):
             False,
             self.getFontFace(),
         ))
-        self.textbox.SetForegroundColour(self.buildSpec['terminal_font_color'])
 
         self.layoutComponent()
         self.Layout()
@@ -92,8 +93,6 @@ class Console(wx.Panel):
         return self.textbox.GetValue()
 
     def layoutComponent(self):
-        self.textbox.SetBackgroundColour(self.buildSpec.get('terminal_bg_color', '#FFFFFF'))
-        self.textbox.SetDoubleBuffered(True)
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.AddSpacer(10)
         sizer.Add(self.text, 0, wx.LEFT, 20)
